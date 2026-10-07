@@ -42,7 +42,7 @@ public class Lista<T> {
         return false;
     }
 
-    public boolean removar(T chave) {
+    public boolean remover(T chave) {
         No<T> ref = inicio;
         No<T> anterior = null;
 
@@ -82,4 +82,24 @@ public class Lista<T> {
         }
         return null;
     }
+    public boolean inserirNaPosicao(T elemento, int posicao){
+        if(posicao <=0 || posicao >= tamanho){
+            return false;
+        }
+        No<T> ref = inicio;
+        No<T> anterior = null;
+        int rodar = 0;
+        while(ref!= null){
+            if (rodar == posicao){
+                No <T> novo = new No (elemento);
+                novo.setProximo(ref);
+                anterior.setProximo(novo);
+                return true;
+            }
+            rodar++;
+            anterior = ref;
+            ref = ref.getProximo();
+        }
+        return false;
+    }
 }
